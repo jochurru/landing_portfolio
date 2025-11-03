@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio Personal - Inicio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* 🎨 PALETA DE COLORES PROFESIONAL */
+        :root {
+            --primary: #0F172A;       /* Azul marino oscuro */
+            --secondary: #10B981;     /* Verde esmeralda */
+            --accent: #F59E0B;        /* Ámbar dorado */
+            --light: #F1F5F9;         /* Gris azulado claro */
+            --dark: #020617;          /* Negro azulado */
+        }
+        
+        /* Aplicar colores personalizados */
+        .navbar-dark {
+            background-color: var(--primary) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-dark {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .text-primary {
+            color: var(--secondary) !important;
+        }
+        
+        .icon-social:hover {
+            color: var(--secondary) !important;
+        }
+        
+        .about-section {
+            background-color: var(--light);
+        }
+        
+        footer {
+            background-color: var(--dark) !important;
+        }
+        
+        /* ESTILOS BASE */
+        .hero-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.9)), url('https://via.placeholder.com/1500x800.png?text=Fondo+de+Portfolio') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+        }
+        
+        .about-section, .skills-section, .portfolio-section, .contact-section {
+            padding: 80px 0;
+        }
+        
+        /* 🔄 TARJETAS FLIP PARA HABILIDADES */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 280px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .flip-card-front {
+            background-color: white;
+        }
+        
+        .flip-card-back {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-back h5 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .flip-card-back ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .flip-card-back li {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+        
+        /* PROYECTOS */
+        .portfolio-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .icon-social {
+            font-size: 1.8rem;
+            margin: 0 10px;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-social:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Animación suave en scroll */
+        section {
+            scroll-margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre Mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-section">
+        <div class="container">
+            <img src="/img/Img1.png" alt="Foto de Perfil" class="profile-img">
+            <h1 class="display-3 fw-bold">¡Hola, soy Jonatan!</h1>
+            <p class="lead mt-3">Desarrollador Full-Stack</p>
+            <a href="#portfolio" class="btn btn-primary btn-lg mt-4">Ver mis Proyectos</a>
+        </div>
+    </header>
+
+    <section id="sobre-mi" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-4 mb-4">Sobre Mí</h2>
+                    <p class="lead">Soy un Desarrollador Full-Stack apasionado con años de experiencia en Desarrollo Web. Me especializo en E-Commerce y Landing Pages, con un enfoque en Paginas comerciales.</p>
+                    <a href="#" class="btn btn-outline-dark mt-3">Descargar CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="skills-section text-center">
+        <div class="container">
+            <h2 class="display-4 mb-5">Mis Habilidades</h2>
+            <p class="text-muted mb-5">Pasa el mouse sobre las tarjetas para ver más detalles</p>
+            <div class="row justify-content-center">
+                
+                <!-- Tarjeta Flip 1 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-code-slash display-5 text-primary mb-3"></i> 
+                                <h5 class="card-title">Desarrollo Frontend</h5>
+                                <p class="card-text text-muted">HTML, CSS, JavaScript</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Stack Frontend</h5>
+                                <ul>
+                                    <li>✓ React & Vue.js</li>
+                                    <li>✓ HTML5 & CSS3</li>
+                                    <li>✓ JavaScript ES6+</li>
+                                    <li>✓ Bootstrap & Tailwind</li>
+                                    <li>✓ Responsive Design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta Flip 2 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-palette display-5 text-success mb-3"></i>
+                                <h5 class="card-title">Diseño UX/UI</h5>
+                                <p class="card-text text-muted">Figma, Adobe XD</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Herramientas UX/UI</h5>
+                                <ul>
+                                    <li>✓ Figma & Adobe XD</li>
+                                    <li>✓ Sketch</li>
+                                    <li>✓ Prototipado Interactivo</li>
+                                    <li>✓ Design Systems</li>
+                                    <li>✓ User Research</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta Flip 3 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-server display-5 text-info mb-3"></i>
+                                <h5 class="card-title">Desarrollo Backend</h5>
+                                <p class="card-text text-muted">Node.js, Python</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Stack Backend</h5>
+                                <ul>
+                                    <li>✓ Node.js & Express</li>
+                                    <li>✓ Python & Django</li>
+                                    <li>✓ SQL & MongoDB</li>
+                                    <li>✓ REST APIs</li>
+                                    <li>✓ Autenticación JWT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta Flip 4 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-lightbulb display-5 text-warning mb-3"></i>
+                                <h5 class="card-title">Metodologías Ágiles</h5>
+                                <p class="card-text text-muted">Scrum, Kanban</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Metodologías</h5>
+                                <ul>
+                                    <li>✓ Scrum Master</li>
+                                    <li>✓ Kanban Flow</li>
+                                    <li>✓ Sprint Planning</li>
+                                    <li>✓ Git & GitHub</li>
+                                    <li>✓ Trabajo Colaborativo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section bg-light">
+        <div class="container">
+            <h2 class="display-4 text-center mb-5">Mis Proyectos</h2>
+            <div class="row g-4">
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="portfolio-item">
+                            <img src="https://via.placeholder.com/400x200.png?text=Proyecto+1" class="card-img-top" alt="Proyecto 1">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nombre del Proyecto 1</h5>
+                            <p class="card-text">Breve descripción del proyecto, tecnologías usadas, tu rol, etc.</p>
+                            <a href="#" class="btn btn-primary btn-sm">Ver Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="portfolio-item">
+                            <img src="https://via.placeholder.com/400x200.png?text=Proyecto+2" class="card-img-top" alt="Proyecto 2">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nombre del Proyecto 2</h5>
+                            <p class="card-text">Breve descripción del proyecto, tecnologías usadas, tu rol, etc.</p>
+                            <a href="#" class="btn btn-primary btn-sm">Ver Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="portfolio-item">
+                            <img src="https://via.placeholder.com/400x200.png?text=Proyecto+3" class="card-img-top" alt="Proyecto 3">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nombre del Proyecto 3</h5>
+                            <p class="card-text">Breve descripción del proyecto, tecnologías usadas, tu rol, etc.</p>
+                            <a href="#" class="btn btn-primary btn-sm">Ver Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+<section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="display-4 text-center mb-4">Contacto</h2>
+            <p class="lead text-center mb-5">¿Interesado en trabajar juntos? ¡Hablemos!</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <form id="contactForm">
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label for="nombre" class="form-label">Nombre Completo *</label>
+                                        <input type="text" class="form-control" id="nombre" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="asunto" class="form-label">Asunto *</label>
+                                    <input type="text" class="form-control" id="asunto" required>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="mensaje" class="form-label">Mensaje *</label>
+                                    <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="bi bi-send me-2"></i>Enviar Mensaje
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div id="mensajeExito" class="alert alert-success mt-4 d-none" role="alert">
+                                <i class="bi bi-check-circle me-2"></i>¡Mensaje enviado correctamente! Te responderé pronto.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <p class="mb-3">Contactame directamente:</p>
+                        <a href="mailto:tu.email@example.com" class="btn btn-outline-primary mb-3">
+                            <i class="bi bi-envelope me-2"></i>jonatan.churruarin@outlook.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links text-center mt-5">
+                <p class="mb-3">Sígueme en redes sociales:</p>
+                <a href="https://linkedin.com/in/tunombre" target="_blank" class="icon-social"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/tuusuario" target="_blank" class="icon-social"><i class="bi bi-github"></i></a>
+                <a href="https://x.com/tuusuario" target="_blank" class="icon-social"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://behance.net/tuusuario" target="_blank" class="icon-social"><i class="bi bi-behance"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 [Jonatan Churruarin Dev]. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // Manejo del formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes integrar tu servicio de email (EmailJS, Formspree, etc.)
+            // Por ahora mostramos un mensaje de éxito
+            
+            const mensajeExito = document.getElementById('mensajeExito');
+            mensajeExito.classList.remove('d-none');
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                mensajeExito.classList.add('d-none');
+            }, 5000);
+        });
+    </script>
+    
+</body>
+</html>
